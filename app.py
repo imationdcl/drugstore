@@ -1,11 +1,14 @@
 from flask import Flask, request, jsonify
 from flask_restful import Resource, Api
+from flask_cors import CORS, cross_origin
+
 from database import Database, SQLITE
 
 dbms = Database(SQLITE, dbname='drugstore.db')
-#db_connect = create_engine('sqlite:////drugstore.db') #La ruta depende de donde tengas almacenada la base de datos
-#conn = db_connect.connect() # Conexión a la Base de Datos
+
 app = Flask(__name__)
+cors = CORS(app)
+app.config['CORS_HEADERS'] = 'Content-Type'
 
 api = Api(app)
 
@@ -49,4 +52,4 @@ if __name__ == '__main__':
     dbms.create_db_tables()
     dbms.clean_data()
     dbms.load_sample_data()
-    app.run(port='5000', debug=True)
+    app.run(host='0.0.0.0')
