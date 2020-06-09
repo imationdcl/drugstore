@@ -17,13 +17,15 @@ Run docker-compose:
 
     docker-compose up --build -d
 
-Or run the sample server
+Or run the sample server:
+
     virtualenv venv
     source venv/bin/activate
     pip install -r requirements.txt
     python app.py
 
-Run test 
+Run test:
+
     pytest -v
 
 Try the endpoints:
