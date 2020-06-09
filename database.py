@@ -104,7 +104,7 @@ class Database:
             fk_region = drugstore['fk_region']
             fk_comuna = drugstore['fk_comuna']
             
-            query = "insert into drugstores values('{0}','{1}','{2}','{3}','{4}','{5}','{6}','{7}','{8}','{9}','{10}','{11}','{12}', '{13}')".format(local_id,fecha,local_nombre,comuna_nombre, comuna_nombre, localidad_nombre, local_direccion,funcionamiento_hora_apertura, funcionamiento_hora_cierre, local_telefono, local_lat, local_lng, funcionamiento_dia,fk_region, fk_comuna)
+            query = "insert into drugstores values('{0}','{1}','{2}','{3}','{4}','{5}','{6}','{7}','{8}','{9}','{10}','{11}','{12}', '{13}')".format(local_id, fecha, local_nombre, comuna_nombre, localidad_nombre, local_direccion,funcionamiento_hora_apertura, funcionamiento_hora_cierre, local_telefono, local_lat, local_lng, funcionamiento_dia,fk_region, fk_comuna)
             self.execute_query(query)
         
         return {'status': 'Drustores added'} 

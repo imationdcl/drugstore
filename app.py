@@ -17,18 +17,20 @@ class Drugstore(Resource):
     def get(self):
 
         local_name = request.args.get('local_nombre')
-        commune_name = request.args.get('comuna_nombre')
+        commune_id = request.args.get('comuna_id')
+
+        print(local_name)
         
-        query = 'select local_nombre, local_direccion, local_lat, local_lng from drugstores' # Esta línea ejecuta un query y retorna un json como resultado
+        query = 'select local_nombre, local_direccion, local_telefono, local_lat, local_lng from drugstores' # Esta línea ejecuta un query y retorna un json como resultado
         
-        if local_name or commune_name != "":
+        if local_name or commune_id != None:
             query += ' where 1=1 '
         
-        if local_name != None:
+        if local_name != None and local_name != '':
             query += " and local_nombre = '{0}'".format(local_name)
 
-        if commune_name != None:
-            query += " and comuna_nombre = '{0}'".format(commune_name)
+        if commune_id != None and commune_id != '':
+            query += " and fk_comuna = '{0}'".format(commune_id)
 
         result = dbms.select_execute(query=query)
         
@@ -37,7 +39,7 @@ class Drugstore(Resource):
 
 class DrugstoreData(Resource):
     def get(self, drugstore_id):
-        query = "select local_nombre, local_direccion, local_lat, local_lng from drugstores where local_id =%d " % int(drugstore_id)
+        query = "select local_nombre, local_direccion, local_telefono, local_lat, local_lng from drugstores where local_id =%d " % int(drugstore_id)
         result = dbms.select_execute(query=query)
         
         return jsonify({'data': [dict(row) for row in result]})
