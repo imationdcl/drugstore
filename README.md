@@ -11,7 +11,7 @@ Usage
 Clone the repo:
 
     git clone https://github.com/imationdcl/drugstore.git
-    cd drugstore
+    cd drugstore/api
 
 Run docker-compose:
 
