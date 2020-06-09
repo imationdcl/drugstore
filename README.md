@@ -29,6 +29,7 @@ Run test:
     pytest -v
 
 Try the endpoints:
+
     curl --request GET \
         --url http://localhost:5000/drugstores
     
