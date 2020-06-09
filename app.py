@@ -30,8 +30,6 @@ class Drugstore(Resource):
         if commune_name != None:
             query += " and comuna_nombre = '{0}'".format(commune_name)
 
-
-
         result = dbms.select_execute(query=query)
         
         return jsonify({'data': [dict(row) for row in result]})
